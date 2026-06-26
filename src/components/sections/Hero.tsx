@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Starfield from "@/components/Starfield";
 import { siteConfig, homeContent } from "@/lib/config";
 
@@ -130,20 +131,23 @@ export default function Hero() {
             {homeContent.hero.sub}
           </p>
 
-          {/* Portrait */}
+          {/* Logo */}
           <div
             className="mt-9 relative"
             style={{ opacity: portraitO, transform: `translateY(${ty(portraitO)}px)` }}
           >
             <div
-              className="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto border-2 border-[rgba(200,162,75,0.3)] overflow-hidden"
-              style={{ boxShadow: "0 0 60px rgba(200,162,75,0.15), 0 0 120px rgba(200,162,75,0.05)" }}
+              className="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto border-2 border-[rgba(200,162,75,0.35)] overflow-hidden"
+              style={{ boxShadow: "0 0 60px rgba(200,162,75,0.2), 0 0 120px rgba(200,162,75,0.07)" }}
             >
-              <div className="w-full h-full bg-deep-indigo flex items-center justify-center">
-                <span className="text-gold/40 text-xs text-center px-4 leading-relaxed">
-                  [Astrologer<br />Portrait]
-                </span>
-              </div>
+              <Image
+                src="/logo.jpeg"
+                alt="Astro Thangabharthi"
+                width={176}
+                height={176}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
           </div>
 

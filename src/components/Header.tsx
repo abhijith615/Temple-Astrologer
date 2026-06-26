@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { siteConfig, navLinks } from "@/lib/config";
@@ -37,10 +38,17 @@ export default function Header() {
         }}
       >
         <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between gap-4">
-          {/* Wordmark */}
-          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label="Home">
-            <span className="text-gold text-lg">✦</span>
-            <span className="font-display text-base md:text-lg tracking-tight text-ivory font-light leading-tight">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Home">
+            <Image
+              src="/logo.jpeg"
+              alt="Astro Thangabharthi — Arutperunjothi Jothida Nilayam"
+              width={44}
+              height={44}
+              className="rounded-full"
+              priority
+            />
+            <span className="font-display text-base md:text-lg tracking-tight text-ivory font-light leading-tight hidden sm:block">
               Arutperunjothi
               <span className="block text-[9px] tracking-[0.2em] uppercase text-gold/70 font-sans">
                 Jothida Nilayam
@@ -110,7 +118,10 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between px-6 py-4">
-          <span className="font-display text-lg text-gold font-light">✦ Arutperunjothi</span>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.jpeg" alt="Logo" width={36} height={36} className="rounded-full" />
+            <span className="font-display text-lg text-ivory font-light">Arutperunjothi</span>
+          </div>
           <button onClick={() => setMenuOpen(false)} className="text-ivory" aria-label="Close menu">
             <X size={24} />
           </button>

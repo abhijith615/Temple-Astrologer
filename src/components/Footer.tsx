@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig, navLinks, solutions } from "@/lib/config";
 
 export default function Footer() {
@@ -14,10 +15,20 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <p className="font-display text-xl text-gold font-light mb-1">✦ Arutperunjothi</p>
-            <p className="eyebrow mb-4" style={{ opacity: 0.6 }}>
-              Jothida Nilayam · Est. {siteConfig.established}
-            </p>
+            <div className="flex items-center gap-3 mb-3">
+              <Image
+                src="/logo.jpeg"
+                alt="Astro Thangabharthi logo"
+                width={56}
+                height={56}
+                className="rounded-full"
+              />
+              <div>
+                <p className="font-display text-base text-ivory font-light leading-tight">Arutperunjothi</p>
+                <p className="text-[10px] tracking-[0.18em] uppercase text-gold/60 font-sans">Jothida Nilayam</p>
+              </div>
+            </div>
+            <p className="eyebrow mb-3" style={{ opacity: 0.5 }}>Est. {siteConfig.established}</p>
             <p className="text-sm leading-relaxed text-[var(--text-on-dark-muted)] max-w-[220px]">
               {siteConfig.tagline} Where ancient Vedic science meets the modern seeker.
             </p>

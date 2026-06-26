@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     title: `${siteConfig.brandName} — ${siteConfig.astrologerName}`,
     description: `Authentic Vedic astrology consultations. ${siteConfig.tagline}`,
     type: "website",
+    images: [{ url: "/logo.jpeg", width: 1024, height: 1024, alt: "Astro Thangabharthi" }],
+  },
+  icons: {
+    icon: "/logo.jpeg",
+    apple: "/logo.jpeg",
   },
 };
 
