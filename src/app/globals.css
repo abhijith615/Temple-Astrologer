@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --midnight: #0B0E1A;
+    --deep-indigo: #161B33;
+    --champagne-gold: #C8A24B;
+    --soft-gold: #E4CE97;
+    --ivory: #F6F1E7;
+    --warm-sand: #EDE4D3;
+    --text-on-dark: #F6F1E7;
+    --text-on-dark-muted: #A9AEC2;
+    --text-on-light: #1B1D2A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--midnight);
+    color: var(--text-on-dark);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--champagne-gold);
+    color: var(--midnight);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--champagne-gold);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .text-gold { color: var(--champagne-gold); }
+  .text-soft-gold { color: var(--soft-gold); }
+  .text-ivory { color: var(--ivory); }
+  .text-muted-celestial { color: var(--text-on-dark-muted); }
+  .bg-midnight { background-color: var(--midnight); }
+  .bg-deep-indigo { background-color: var(--deep-indigo); }
+  .bg-ivory-celestial { background-color: var(--ivory); }
+  .bg-warm-sand { background-color: var(--warm-sand); }
+
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--champagne-gold);
+  }
+
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--midnight); }
+::-webkit-scrollbar-thumb { background: var(--deep-indigo); border-radius: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
