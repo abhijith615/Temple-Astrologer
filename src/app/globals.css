@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Map Tailwind's sans utility to Avenir Next (→ Mulish fallback) */
+@theme {
+  --font-sans: "Avenir Next", "Avenir", var(--font-mulish), system-ui,
+    -apple-system, sans-serif;
+}
+
 @layer base {
   :root {
     --midnight: #0B0E1A;
@@ -22,6 +28,8 @@
     background-color: var(--midnight);
     color: var(--text-on-dark);
     overflow-x: hidden;
+    font-family: "Avenir Next", "Avenir", var(--font-mulish), system-ui,
+      -apple-system, sans-serif;
   }
 
   ::selection {
@@ -37,8 +45,11 @@
 }
 
 @layer utilities {
+  /* Headings now use Avenir Next (proprietary) → Mulish fallback */
   .font-display {
-    font-family: "Fraunces", Georgia, serif;
+    font-family: "Avenir Next", "Avenir", var(--font-mulish), system-ui,
+      -apple-system, sans-serif;
+    letter-spacing: -0.01em;
   }
 
   .text-gold { color: var(--champagne-gold); }
