@@ -42,26 +42,32 @@ export default function Header() {
       >
         <div className="max-w-[1320px] mx-auto px-5 flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label="Astro Thangabharthi — Home">
+          <Link href="/" className="flex items-center gap-3 shrink-0" aria-label="Astro Thangabharthi — Home">
             <span
               className="block rounded-full overflow-hidden shrink-0"
-              style={{ width: 46, height: 46, border: "1px solid rgba(200,162,75,0.4)" }}
+              style={{
+                width: scrolled ? 56 : 64,
+                height: scrolled ? 56 : 64,
+                border: "2px solid rgba(200,162,75,0.6)",
+                boxShadow: "0 0 0 4px rgba(200,162,75,0.12), 0 4px 14px rgba(22,27,51,0.25)",
+                transition: "width 0.3s, height 0.3s",
+              }}
             >
               <Image
                 src="/logo.jpeg"
                 alt="Astro Thangabharthi logo"
-                width={46}
-                height={46}
+                width={64}
+                height={64}
                 className="w-full h-full object-cover"
-                style={{ objectPosition: "center 30%", transform: "scale(1.35)" }}
+                style={{ objectPosition: "center 40%", transform: "scale(1.5)" }}
                 priority
               />
             </span>
             <span className="leading-tight hidden sm:block">
-              <span className="block font-display text-base md:text-lg tracking-tight font-medium" style={{ color: "var(--text-on-light)" }}>
+              <span className="block font-display text-lg md:text-xl tracking-tight font-medium" style={{ color: "var(--text-on-light)" }}>
                 Astro Thangabharthi
               </span>
-              <span className="block text-[9px] tracking-[0.18em] uppercase" style={{ color: "var(--champagne-gold)" }}>
+              <span className="block text-[9px] md:text-[10px] tracking-[0.18em] uppercase" style={{ color: "var(--champagne-gold)" }}>
                 Arutperunjothi Jothida Nilayam
               </span>
             </span>
@@ -134,8 +140,8 @@ export default function Header() {
       >
         <div className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: "rgba(200,162,75,0.2)" }}>
           <div className="flex items-center gap-2.5">
-            <span className="block rounded-full overflow-hidden" style={{ width: 40, height: 40, border: "1px solid rgba(200,162,75,0.4)" }}>
-              <Image src="/logo.jpeg" alt="Logo" width={40} height={40} className="w-full h-full object-cover" style={{ objectPosition: "center 30%", transform: "scale(1.35)" }} />
+            <span className="block rounded-full overflow-hidden" style={{ width: 48, height: 48, border: "2px solid rgba(200,162,75,0.6)" }}>
+              <Image src="/logo.jpeg" alt="Logo" width={48} height={48} className="w-full h-full object-cover" style={{ objectPosition: "center 40%", transform: "scale(1.5)" }} />
             </span>
             <span className="font-display text-lg font-medium" style={{ color: "var(--text-on-light)" }}>Astro Thangabharthi</span>
           </div>

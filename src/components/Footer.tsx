@@ -16,16 +16,22 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-3">
-              <Image
-                src="/logo.jpeg"
-                alt="Astro Thangabharthi logo"
-                width={56}
-                height={56}
-                className="rounded-full"
-              />
+              <span
+                className="block rounded-full overflow-hidden shrink-0"
+                style={{ width: 64, height: 64, border: "2px solid rgba(200,162,75,0.5)", boxShadow: "0 0 0 4px rgba(200,162,75,0.1)" }}
+              >
+                <Image
+                  src="/logo.jpeg"
+                  alt="Astro Thangabharthi logo"
+                  width={64}
+                  height={64}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "center 40%", transform: "scale(1.5)" }}
+                />
+              </span>
               <div>
-                <p className="font-display text-base text-ivory font-light leading-tight">Arutperunjothi</p>
-                <p className="text-[10px] tracking-[0.18em] uppercase text-gold/60 font-sans">Jothida Nilayam</p>
+                <p className="font-display text-base text-ivory font-light leading-tight">Astro Thangabharthi</p>
+                <p className="text-[10px] tracking-[0.18em] uppercase text-gold/60 font-sans">Arutperunjothi Jothida Nilayam</p>
               </div>
             </div>
             <p className="eyebrow mb-3" style={{ opacity: 0.5 }}>Est. {siteConfig.established}</p>
