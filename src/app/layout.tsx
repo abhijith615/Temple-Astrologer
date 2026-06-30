@@ -13,6 +13,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  // Update this to the real domain once deployed (used for OG/Twitter image URLs)
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://astrothangabharthi.com"),
   title: {
     default: `${siteConfig.brandName} — ${siteConfig.astrologerName} | Vedic Astrologer`,
     template: `%s — ${siteConfig.brandName}`,

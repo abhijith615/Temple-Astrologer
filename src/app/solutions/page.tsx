@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { Prose, ClosingCTA } from "@/components/ui";
+import { Prose } from "@/components/ui";
+import { PhotoBand, RingsGlyph, CradleGlyph, PathsGlyph, HeartsGlyph, HourglassGlyph } from "@/components/art";
 import { solutions } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
     "Marriage matching, conception & fertility guidance, divorce & separation counsel, love marriage support, and delayed marriage solutions through authentic Vedic astrology.",
+};
+
+const glyphMap: Record<string, React.ComponentType<{ size?: number }>> = {
+  "marriage-matching": RingsGlyph,
+  "conception-fertility": CradleGlyph,
+  "divorce-separation": PathsGlyph,
+  "love-marriage": HeartsGlyph,
+  "delayed-marriage": HourglassGlyph,
 };
 
 export default function SolutionsPage() {
@@ -49,6 +58,20 @@ export default function SolutionsPage() {
             style={{ background: onLight ? "var(--ivory)" : "var(--midnight)" }}
           >
             <div className="max-w-[860px] mx-auto">
+              {(() => {
+                const Glyph = glyphMap[sol.id] ?? RingsGlyph;
+                return (
+                  <div
+                    className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
+                    style={{
+                      background: onLight ? "rgba(200,162,75,0.08)" : "var(--deep-indigo)",
+                      border: "1px solid rgba(200,162,75,0.3)",
+                    }}
+                  >
+                    <Glyph size={36} />
+                  </div>
+                );
+              })()}
               <p className="eyebrow mb-4" style={{ color: "var(--champagne-gold)" }}>
                 {String(idx + 1).padStart(2, "0")} — Solution
               </p>
@@ -154,7 +177,18 @@ export default function SolutionsPage() {
         );
       })}
 
-      <ClosingCTA statement="Whatever you are facing, there is a path forward. Let us find it together." />
+      <PhotoBand src="/img/consultation.jpg" alt="An astrology consultation in progress">
+        <span className="text-3xl mb-6 block text-soft-gold" aria-hidden="true">✦</span>
+        <h2 className="font-display text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.1] font-light text-ivory mb-9">
+          Whatever you are facing, there is a path forward. Let us find it together.
+        </h2>
+        <Link
+          href="/book-consultation"
+          className="inline-block px-8 py-3.5 rounded-full text-sm font-medium text-[var(--midnight)] bg-[var(--champagne-gold)] hover:bg-[var(--soft-gold)] transition-colors"
+        >
+          Book a Consultation
+        </Link>
+      </PhotoBand>
     </>
   );
 }

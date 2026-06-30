@@ -62,7 +62,7 @@ export default function BookingForm() {
   } as React.CSSProperties;
 
   return (
-    <div className="max-w-[920px] mx-auto px-6 pb-24 -mt-8 relative z-10">
+    <div className="max-w-[920px] mx-auto px-6 pb-24 relative z-10">
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Consultation Type */}
         <fieldset

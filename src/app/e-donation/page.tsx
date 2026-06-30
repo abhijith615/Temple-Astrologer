@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { SectionHeading, Prose } from "@/components/ui";
+import { PhotoBand } from "@/components/art";
 import { donationContent } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -115,15 +116,13 @@ export default function EDonationPage() {
         </div>
       </section>
 
-      {/* Closing blessing */}
-      <section className="py-20 md:py-24 px-6" style={{ background: "var(--midnight)" }}>
-        <div className="max-w-[700px] mx-auto text-center">
-          <span className="text-3xl mb-6 block" aria-hidden="true">🙏</span>
-          <p className="font-display text-[clamp(1.5rem,3.2vw,2.4rem)] font-light leading-snug text-soft-gold">
-            {d.closing}
-          </p>
-        </div>
-      </section>
+      {/* Closing blessing over temple photo */}
+      <PhotoBand src="/img/temple-sunset.jpg" alt="Temple gopuram at sunset">
+        <span className="text-3xl mb-6 block" aria-hidden="true">🙏</span>
+        <p className="font-display text-[clamp(1.5rem,3.2vw,2.4rem)] font-light leading-snug text-soft-gold">
+          {d.closing}
+        </p>
+      </PhotoBand>
     </>
   );
 }

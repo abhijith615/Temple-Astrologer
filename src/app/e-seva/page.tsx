@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import { SectionHeading } from "@/components/ui";
+import { PhotoBand } from "@/components/art";
 import ESevaForm from "./ESevaForm";
 import { eSevaContent, siteConfig } from "@/lib/config";
 
@@ -178,6 +179,14 @@ export default function ESevaPage() {
           </p>
         </div>
       </section>
+
+      {/* Closing band */}
+      <PhotoBand src="/img/temple-interior.jpg" alt="Sacred temple interior with lamps and deities" minHeight="360px">
+        <span className="text-3xl mb-5 block text-soft-gold" aria-hidden="true">✦</span>
+        <p className="font-display text-[clamp(1.5rem,3.5vw,2.6rem)] font-light leading-snug text-ivory">
+          Ancient guidance, delivered wherever you are in the world.
+        </p>
+      </PhotoBand>
     </>
   );
 }

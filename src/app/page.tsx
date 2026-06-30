@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Hero from "@/components/sections/Hero";
-import { SectionHeading, Prose, ClosingCTA } from "@/components/ui";
+import { SectionHeading, Prose } from "@/components/ui";
+import { FramedImage, PhotoBand, CosmosArt, CelestialDivider } from "@/components/art";
 import { homeContent, siteConfig } from "@/lib/config";
 
 const trustItems = [
@@ -42,17 +44,21 @@ export default function Home() {
           >
             &ldquo;{c.introduction}&rdquo;
           </p>
+          <div className="mt-10"><CelestialDivider /></div>
         </div>
       </section>
 
-      {/* About Vedic Astrology */}
+      {/* About Vedic Astrology — two column with image */}
       <section className="py-24 md:py-32 px-6" style={{ background: "var(--midnight)" }}>
-        <div className="max-w-[820px] mx-auto">
-          <SectionHeading eyebrow="The Science of Light" title={c.aboutVedic.title} align="left" />
-          <div className="mt-8 space-y-5">
-            {c.aboutVedic.body.map((p, i) => (
-              <Prose key={i}>{p}</Prose>
-            ))}
+        <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <FramedImage src="/img/temple-dawn.jpg" alt="Arutperunjothi Jothida Nilayam temple at dawn with lamps and manuscripts" aspect="4/5" />
+          <div>
+            <SectionHeading eyebrow="The Science of Light" title={c.aboutVedic.title} align="left" />
+            <div className="mt-8 space-y-5">
+              {c.aboutVedic.body.map((p, i) => (
+                <Prose key={i}>{p}</Prose>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -67,12 +73,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Science & Cosmos */}
+      {/* Science & Cosmos — two column with cosmic art */}
       <section className="py-24 md:py-32 px-6" style={{ background: "var(--deep-indigo)" }}>
-        <div className="max-w-[820px] mx-auto">
-          <SectionHeading eyebrow="Ancient Wisdom, Modern Echoes" title={c.science.title} align="left" />
-          <div className="mt-8">
-            <Prose>{c.science.body}</Prose>
+        <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <SectionHeading eyebrow="Ancient Wisdom, Modern Echoes" title={c.science.title} align="left" />
+            <div className="mt-8">
+              <Prose>{c.science.body}</Prose>
+            </div>
+          </div>
+          <div className="order-1 md:order-2 flex justify-center">
+            <CosmosArt className="w-64 h-64 md:w-80 md:h-80" />
           </div>
         </div>
       </section>
@@ -96,7 +107,19 @@ export default function Home() {
         </div>
       </section>
 
-      <ClosingCTA statement={`${siteConfig.tagline} Let us read your chart together.`} />
+      {/* Closing CTA over real photograph */}
+      <PhotoBand src="/img/temple-sunset.jpg" alt="Temple at sunset with a lit oil lamp and horoscope">
+        <span className="text-3xl mb-6 block text-soft-gold" aria-hidden="true">✦</span>
+        <h2 className="font-display text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.1] font-light text-ivory mb-9">
+          {siteConfig.tagline} Let us read your chart together.
+        </h2>
+        <Link
+          href="/book-consultation"
+          className="inline-block px-8 py-3.5 rounded-full text-sm font-medium text-[var(--midnight)] bg-[var(--champagne-gold)] hover:bg-[var(--soft-gold)] transition-colors"
+        >
+          Book a Consultation
+        </Link>
+      </PhotoBand>
     </>
   );
 }
