@@ -59,7 +59,7 @@ export default function Header() {
                 width={64}
                 height={64}
                 className="w-full h-full object-cover"
-                style={{ objectPosition: "center 40%", transform: "scale(1.5)" }}
+                style={{ transform: "scale(1.04)" }}
                 priority
               />
             </span>
@@ -141,7 +141,7 @@ export default function Header() {
         <div className="flex items-center justify-between px-6 py-4 border-b" style={{ borderColor: "rgba(200,162,75,0.2)" }}>
           <div className="flex items-center gap-2.5">
             <span className="block rounded-full overflow-hidden" style={{ width: 48, height: 48, border: "2px solid rgba(200,162,75,0.6)" }}>
-              <Image src="/logo.jpeg" alt="Logo" width={48} height={48} className="w-full h-full object-cover" style={{ objectPosition: "center 40%", transform: "scale(1.5)" }} />
+              <Image src="/logo.jpeg" alt="Logo" width={48} height={48} className="w-full h-full object-cover" style={{ transform: "scale(1.04)" }} />
             </span>
             <span className="font-display text-lg font-medium" style={{ color: "var(--text-on-light)" }}>Astro Thangabharthi</span>
           </div>

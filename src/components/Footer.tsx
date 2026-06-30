@@ -26,7 +26,7 @@ export default function Footer() {
                   width={64}
                   height={64}
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 40%", transform: "scale(1.5)" }}
+                  style={{ transform: "scale(1.04)" }}
                 />
               </span>
               <div>
