@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { SectionHeading, Prose } from "@/components/ui";
 import { PhotoBand } from "@/components/art";
@@ -28,6 +29,19 @@ export default function EDonationPage() {
           </p>
         </div>
       </section>
+
+      {/* Temple sanctum showcase */}
+      <div className="relative h-[42vh] md:h-[56vh] w-full overflow-hidden">
+        <Image
+          src="/img/temple-sanctum.jpg"
+          alt="The temple sanctum at dusk with Lord Vinayagar, a lit lamp, and sacred scrolls"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          style={{ objectPosition: "center 35%" }}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(11,14,26,0.3), rgba(11,14,26,0.6))" }} aria-hidden="true" />
+      </div>
 
       {/* Categories */}
       <section className="py-20 md:py-24 px-6" style={{ background: "var(--ivory)" }}>

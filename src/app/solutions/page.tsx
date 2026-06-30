@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { Prose } from "@/components/ui";
 import { PhotoBand, RingsGlyph, CradleGlyph, PathsGlyph, HeartsGlyph, HourglassGlyph } from "@/components/art";
@@ -27,6 +28,19 @@ export default function SolutionsPage() {
         title="Solutions"
         subtitle="Every life carries its own celestial story. These are the areas in which we offer the deepest guidance — each consultation conducted with scholarship, honesty, and compassion."
       />
+
+      {/* Showcase strip */}
+      <div className="relative h-[40vh] md:h-[54vh] w-full overflow-hidden">
+        <Image
+          src="/img/zodiac-disc.jpg"
+          alt="A hand-crafted zodiac wheel disc beside a sacred manuscript and brass lamp"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          style={{ objectPosition: "center 35%" }}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(11,14,26,0.35), rgba(11,14,26,0.7))" }} aria-hidden="true" />
+      </div>
 
       {/* Quick nav */}
       <nav

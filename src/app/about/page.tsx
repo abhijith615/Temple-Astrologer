@@ -30,7 +30,7 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-          <FramedImage src="/img/consultation.jpg" alt="Dr. N. Thangabharathi guiding a client through a horoscope reading" />
+          <FramedImage src="/img/scholar-manuscript.jpg" alt="A learned astrologer studying an ancient palm-leaf almanac surrounded by charts and sacred texts" />
         </div>
       </section>
 

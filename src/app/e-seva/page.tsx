@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import { SectionHeading } from "@/components/ui";
 import { PhotoBand } from "@/components/art";
@@ -20,6 +21,24 @@ export default function ESevaPage() {
         title="E Seva — Digital Astrology Services"
         subtitle={e.intro}
       />
+
+      {/* Showcase strip — tradition meets digital */}
+      <div className="relative h-[40vh] md:h-[54vh] w-full overflow-hidden">
+        <Image
+          src="/img/eseva-temple-laptop.jpg"
+          alt="A temple table with a sacred manuscript, brass lamp, and a laptop displaying a horoscope chart"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          style={{ objectPosition: "center 45%" }}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(11,14,26,0.3), rgba(11,14,26,0.72))" }} aria-hidden="true" />
+        <div className="absolute inset-0 flex items-end justify-center pb-10 px-6">
+          <p className="font-display text-lg md:text-2xl font-light italic text-ivory text-center max-w-2xl drop-shadow-lg">
+            Ancient wisdom, delivered to your screen — wherever you are.
+          </p>
+        </div>
+      </div>
 
       {/* How it works steps */}
       <section className="py-20 md:py-24 px-6" style={{ background: "var(--midnight)" }}>

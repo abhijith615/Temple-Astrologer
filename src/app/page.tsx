@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import { SectionHeading, Prose } from "@/components/ui";
-import { FramedImage, PhotoBand, CosmosArt, CelestialDivider } from "@/components/art";
+import { FramedImage, PhotoBand, CelestialDivider } from "@/components/art";
 import { homeContent, siteConfig } from "@/lib/config";
 
 const trustItems = [
@@ -82,8 +82,8 @@ export default function Home() {
               <Prose>{c.science.body}</Prose>
             </div>
           </div>
-          <div className="order-1 md:order-2 flex justify-center">
-            <CosmosArt className="w-64 h-64 md:w-80 md:h-80" />
+          <div className="order-1 md:order-2">
+            <FramedImage src="/img/brass-zodiac-wheel.jpg" alt="An ornate brass zodiac wheel with the twelve signs around a radiant sun" aspect="4/5" accent={false} />
           </div>
         </div>
       </section>
