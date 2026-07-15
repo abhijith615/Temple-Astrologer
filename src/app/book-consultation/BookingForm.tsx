@@ -21,16 +21,47 @@ const hours = [
   { day: "Sunday", time: "9:00 AM – 8:00 PM" },
 ];
 
+const WEB3FORMS_ACCESS_KEY = "6158245a-9aa7-4481-a978-fd9e692b3e33";
+
 export default function BookingForm() {
   const [service, setService] = useState("");
   const [selectedFee, setSelectedFee] = useState(0);
   const [selectedPayment, setSelectedPayment] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+    setError("");
+    setSending(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("subject", "New Consultation Booking — Astro Thangabharthi");
+    formData.append("from_name", "Astro Thangabharthi Website");
+    // Button-selected values aren't native form fields, so add them explicitly
+    formData.append("Consultation Fee", `${fees[selectedFee].name} — ${fees[selectedFee].price}`);
+    formData.append("Preferred Payment", paymentMethods[selectedPayment]);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        setError(data.message || "Something went wrong. Please try again or message us on WhatsApp.");
+      }
+    } catch {
+      setError("Network error. Please try again or message us on WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -78,6 +109,7 @@ export default function BookingForm() {
           </label>
           <select
             id="service"
+            name="Service"
             required
             value={service}
             onChange={(e) => setService(e.target.value)}
@@ -99,10 +131,10 @@ export default function BookingForm() {
           <legend className="eyebrow px-2">Your Details</legend>
           <div className="grid sm:grid-cols-2 gap-5 mt-2">
             <Field label="Full Name" required>
-              <input type="text" required className={inputStyle} style={inputBg} placeholder="Your full name" />
+              <input type="text" name="Full Name" required className={inputStyle} style={inputBg} placeholder="Your full name" />
             </Field>
             <Field label="Gender" required>
-              <select required className={inputStyle} style={inputBg} defaultValue="">
+              <select name="Gender" required className={inputStyle} style={inputBg} defaultValue="">
                 <option value="">Select</option>
                 <option>Male</option>
                 <option>Female</option>
@@ -110,25 +142,25 @@ export default function BookingForm() {
               </select>
             </Field>
             <Field label="Date of Birth" required>
-              <input type="date" required className={inputStyle} style={inputBg} />
+              <input type="date" name="Date of Birth" required className={inputStyle} style={inputBg} />
             </Field>
             <Field label="Exact Time of Birth" required>
-              <input type="time" required className={inputStyle} style={inputBg} />
+              <input type="time" name="Time of Birth" required className={inputStyle} style={inputBg} />
             </Field>
             <Field label="Place of Birth" required>
-              <input type="text" required className={inputStyle} style={inputBg} placeholder="City, State, Country" />
+              <input type="text" name="Place of Birth" required className={inputStyle} style={inputBg} placeholder="City, State, Country" />
             </Field>
             <Field label="WhatsApp Number" required>
-              <input type="tel" required className={inputStyle} style={inputBg} placeholder="+91 ..." />
+              <input type="tel" name="WhatsApp Number" required className={inputStyle} style={inputBg} placeholder="+91 ..." />
             </Field>
             <Field label="Email Address" required>
-              <input type="email" required className={inputStyle} style={inputBg} placeholder="you@example.com" />
+              <input type="email" name="email" required className={inputStyle} style={inputBg} placeholder="you@example.com" />
             </Field>
             <Field label="Country / Region">
-              <input type="text" className={inputStyle} style={inputBg} placeholder="India" />
+              <input type="text" name="Country" className={inputStyle} style={inputBg} placeholder="India" />
             </Field>
             <Field label="Preferred Language" required>
-              <select required className={inputStyle} style={inputBg} defaultValue="">
+              <select name="Preferred Language" required className={inputStyle} style={inputBg} defaultValue="">
                 <option value="">Select</option>
                 {languages.map((l) => <option key={l}>{l}</option>)}
               </select>
@@ -137,6 +169,7 @@ export default function BookingForm() {
           <div className="mt-5">
             <Field label="Your Question or Concern">
               <textarea
+                name="Question or Concern"
                 rows={4}
                 className={inputStyle}
                 style={inputBg}
@@ -229,12 +262,33 @@ export default function BookingForm() {
           </div>
         </fieldset>
 
+        {/* Honeypot spam trap (must stay empty) */}
+        <input
+          type="checkbox"
+          name="botcheck"
+          tabIndex={-1}
+          autoComplete="off"
+          style={{ display: "none" }}
+          aria-hidden="true"
+        />
+
+        {error && (
+          <p
+            className="text-center text-sm rounded-xl py-3 px-4"
+            style={{ background: "rgba(220,80,80,0.12)", color: "#ffb4b4", border: "1px solid rgba(220,80,80,0.3)" }}
+            role="alert"
+          >
+            {error}
+          </p>
+        )}
+
         <button
           type="submit"
-          className="w-full py-4 rounded-full text-sm font-medium transition-colors duration-200"
+          disabled={sending}
+          className="w-full py-4 rounded-full text-sm font-medium transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           style={{ background: "var(--champagne-gold)", color: "var(--midnight)" }}
         >
-          Confirm Booking Request
+          {sending ? "Sending…" : "Confirm Booking Request"}
         </button>
         <p className="text-center text-xs text-[var(--text-on-dark-muted)]">
           We will confirm your appointment within 24 hours. All consultations are conducted in strict confidence.

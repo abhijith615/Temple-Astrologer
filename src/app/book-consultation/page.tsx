@@ -22,7 +22,7 @@ export default function BookConsultationPage() {
       {/* Reassurance intro with photo */}
       <section className="py-20 md:py-24 px-6" style={{ background: "var(--ivory)" }}>
         <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <FramedImage src="/img/consultation.jpg" alt="Dr. N. Thangabharathi explaining a horoscope chart to a client" priority />
+          <FramedImage src="/img/hero-astrologer.jpg" alt="Dr. N. Thangabharathi writing a horoscope by lamplight" aspect="4/3" priority />
           <div>
             <p className="eyebrow mb-4" style={{ color: "var(--champagne-gold)" }}>What to Expect</p>
             <h2 className="font-display text-[clamp(1.8rem,3.5vw,2.6rem)] font-light leading-tight mb-6" style={{ color: "var(--text-on-light)" }}>
