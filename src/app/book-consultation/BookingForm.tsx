@@ -1,18 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CalendarCheck, MessageSquare, Wallet, Clock, Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig, consultationServices, languages } from "@/lib/config";
 
 const fees = [
   { name: "General Reading", price: "₹ 500", note: "30 – 45 mins" },
   { name: "Marriage Matching", price: "₹ 800", note: "45 – 60 mins" },
-  { name: "Detailed Chart", price: "₹ 1,200", note: "60 – 90 mins" },
-  { name: "Jamakkol / Naadi", price: "₹ 1,500", note: "60 – 90 mins" },
-  { name: "Premium Package", price: "₹ 2,500", note: "Full Day · Follow-up" },
+  { name: "Detailed Chart", price: "₹ 1,000", note: "60 – 90 mins" },
+  { name: "Jamakkol / Naadi", price: "₹ 1,000", note: "60 – 90 mins" },
+  { name: "Premium Package", price: "₹ 2,000", note: "Full Day · Follow-up" },
 ];
 
-const paymentMethods = ["UPI / GPay / PhonePe", "Bank Transfer", "Cash on Visit"];
+const paymentMethods = ["UPI / GPay / PhonePe", "Cash on Visit"];
 
 const hours = [
   { day: "Monday – Friday", time: "9:00 AM – 8:00 PM" },
@@ -211,17 +212,19 @@ export default function BookingForm() {
             className="rounded-xl p-6 text-center"
             style={{ background: "rgba(11,14,26,0.5)" }}
           >
-            <p className="font-display text-lg text-ivory">{siteConfig.contact.upi}</p>
-            <p className="text-xs text-[var(--text-on-dark-muted)] mt-1">Scan QR or pay directly to UPI ID above</p>
-            <div
-              className="w-24 h-24 mx-auto my-4 rounded-lg flex items-center justify-center"
-              style={{ border: "1px dashed rgba(200,162,75,0.3)" }}
-              aria-hidden="true"
-            >
-              <span className="text-gold/40 text-xs text-center px-2">[QR Code]</span>
+            <p className="text-xs text-[var(--text-on-dark-muted)] mb-4">Scan the QR with any UPI app to pay</p>
+            <div className="w-52 max-w-full mx-auto rounded-xl overflow-hidden bg-white p-2">
+              <Image
+                src="/img/qr-code.jpg"
+                alt="Scan to pay — UPI ID thangabharathi1970-2@okaxis"
+                width={420}
+                height={560}
+                className="w-full h-auto"
+              />
             </div>
-            <p className="text-xs text-[var(--text-on-dark-muted)]">
-              After payment, please share screenshot via WhatsApp for confirmation
+            <p className="font-display text-base text-ivory mt-4">{siteConfig.contact.upi}</p>
+            <p className="text-xs text-[var(--text-on-dark-muted)] mt-2">
+              After payment, please share the screenshot via WhatsApp for confirmation
             </p>
           </div>
         </fieldset>

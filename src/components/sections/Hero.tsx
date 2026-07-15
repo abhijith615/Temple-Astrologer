@@ -114,7 +114,7 @@ export default function Hero() {
             fill
             priority
             className="object-cover"
-            style={{ objectPosition: "center 30%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
+            style={{ objectPosition: "58% 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
             sizes="100vw"
           />
           {/* Dark overlay that intensifies on scroll */}

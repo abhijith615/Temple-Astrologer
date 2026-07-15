@@ -4,6 +4,50 @@ import Link from "next/link";
 import Image from "next/image";
 import { siteConfig, navLinks, solutions } from "@/lib/config";
 
+/* Brand glyphs (lucide removed brand icons for trademark reasons) */
+const iconProps = {
+  width: 18,
+  height: 18,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+
+function InstagramIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+function FacebookIcon() {
+  return (
+    <svg {...iconProps}>
+      <path d="M13 22v-8h2.6l.5-3H13V9c0-.9.3-1.6 1.7-1.6h1.6V4.7C16.4 4.6 15.4 4.5 14.3 4.5 11.9 4.5 10.4 6 10.4 8.6V11H8v3h2.4v8z" />
+    </svg>
+  );
+}
+function YoutubeIcon() {
+  return (
+    <svg {...iconProps}>
+      <rect x="2" y="6" width="20" height="12" rx="3.5" />
+      <path d="M10 9.3l5.2 2.7L10 14.7z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+const socials = [
+  { label: "Instagram", href: siteConfig.social.instagram, Icon: InstagramIcon },
+  { label: "Facebook", href: siteConfig.social.facebook, Icon: FacebookIcon },
+  { label: "YouTube", href: siteConfig.social.youtube, Icon: YoutubeIcon },
+];
+
 export default function Footer() {
   return (
     <footer
@@ -97,6 +141,26 @@ export default function Footer() {
                 {siteConfig.contact.address.lines.join(", ")}
               </li>
             </ul>
+
+            {/* Social */}
+            <div className="mt-6">
+              <p className="eyebrow mb-3">Follow Us</p>
+              <div className="flex items-center gap-3">
+                {socials.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-10 h-10 rounded-full flex items-center justify-center border transition-colors duration-200 text-[var(--text-on-dark-muted)] hover:text-[var(--midnight)] hover:bg-[var(--champagne-gold)] hover:border-[var(--champagne-gold)]"
+                    style={{ borderColor: "rgba(200,162,75,0.3)" }}
+                  >
+                    <Icon />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

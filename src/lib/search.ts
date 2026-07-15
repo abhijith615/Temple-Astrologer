@@ -34,12 +34,6 @@ export const searchIndex: SearchEntry[] = [
 
   // Booking
   { title: "Book a Consultation", section: "Booking", href: "/book-consultation", keywords: "book appointment consultation birth details payment fees hours contact" },
-
-  // E-Seva
-  { title: "E-Seva", section: "Online Astrology Services", href: "/e-seva", keywords: "online whatsapp email horoscope video consultation audio prediction fee structure jamakkol chandra naadi" },
-
-  // E-Donation
-  { title: "E-Donation", section: "Support the Temple", href: "/e-donation", keywords: "donation annadhanam temple maintenance upi qr general donation terms privacy" },
 ];
 
 export function searchSite(query: string): SearchEntry[] {

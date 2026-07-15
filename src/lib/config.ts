@@ -10,12 +10,17 @@ export const siteConfig = {
   tagline: "Celestial Insight. Timeless Guidance.",
   subTagline: "Where ancient Vedic science meets the modern seeker.",
   location: "Thirupur, Tamil Nadu",
-  credentials: ["MBA", "MA in Vedic Astrology", "M.Sc. in Yoga for Human Excellence"],
+  credentials: ["MBA", "MA Astrology", "M.Sc. in Yoga for Human Excellence"],
+  social: {
+    instagram: "https://www.instagram.com/astrothangabharathi/",
+    facebook: "https://www.facebook.com/profile.php?id=61591777716633",
+    youtube: "https://www.youtube.com/channel/UC0MH6zP621-MFoKtOT78s1w",
+  },
   contact: {
     phones: ["84288 21907", "63810 37364", "98653 40263"],
     whatsapp: "918428821907",
     email: "astrothangabharathi@gmail.com",
-    upi: "astrothangabharathi@upi",
+    upi: "thangabharathi1970-2@okaxis",
     address: {
       lines: [
         "31, 2/605, Narayana Nagar, 1st Street",
@@ -30,14 +35,13 @@ export const siteConfig = {
 };
 
 // Main navigation (multi-page)
+// Note: E-Seva and E-Donation are intentionally hidden from navigation.
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Solutions", href: "/solutions" },
   { label: "Temple History", href: "/temple-history" },
   { label: "Book Consultation", href: "/book-consultation" },
-  { label: "E-Seva", href: "/e-seva" },
-  { label: "E-Donation", href: "/e-donation" },
 ];
 
 // ---------- HOME PAGE ----------
