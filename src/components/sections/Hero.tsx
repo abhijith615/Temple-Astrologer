@@ -111,13 +111,14 @@ export default function Hero() {
           aria-hidden="true"
           style={{ background: "linear-gradient(to bottom, var(--midnight) 0%, var(--deep-indigo) 100%)" }}
         >
-          {/* Desktop / tablet — full image, never cropped */}
+          {/* Desktop / tablet — fills the hero, cropped around the subject */}
           <Image
             src="/img/hero-desktop.jpg"
             alt="Dr. N. Thangabharathi writing a horoscope by lamplight"
             fill
             priority
-            className="object-contain object-center hidden md:block"
+            className="object-cover hidden md:block"
+            style={{ objectPosition: "center 42%" }}
             sizes="100vw"
           />
           {/* Mobile — full image, never cropped */}
