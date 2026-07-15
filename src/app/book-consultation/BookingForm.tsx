@@ -21,7 +21,10 @@ const hours = [
   { day: "Sunday", time: "9:00 AM – 8:00 PM" },
 ];
 
-const WEB3FORMS_ACCESS_KEY = "6158245a-9aa7-4481-a978-fd9e692b3e33";
+// Google Apps Script web-app endpoint that logs bookings to a Google Sheet
+// and emails a notification. See docs/booking-apps-script.gs.
+const BOOKING_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbwtRaSauym1CNx0Fu8GR3afOrL7lStqzvJro9IlBJIQeeZU5pXOWbXprtRrEFXWX3V_bw/exec";
 
 export default function BookingForm() {
   const [service, setService] = useState("");
@@ -36,27 +39,26 @@ export default function BookingForm() {
     setError("");
     setSending(true);
 
-    const formData = new FormData(e.currentTarget);
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", "New Consultation Booking — Astro Thangabharthi");
-    formData.append("from_name", "Astro Thangabharthi Website");
-    // Button-selected values aren't native form fields, so add them explicitly
-    formData.append("Consultation Fee", `${fees[selectedFee].name} — ${fees[selectedFee].price}`);
-    formData.append("Preferred Payment", paymentMethods[selectedPayment]);
+    // Build URL-encoded params from the form — this is a "simple" request,
+    // so the browser sends it without a CORS preflight the script can't answer.
+    const params = new URLSearchParams();
+    new FormData(e.currentTarget).forEach((value, key) => {
+      if (typeof value === "string") params.append(key, value);
+    });
+    // Button-selected values aren't native form fields, so add them explicitly.
+    params.append("Consultation Fee", `${fees[selectedFee].name} — ${fees[selectedFee].price}`);
+    params.append("Preferred Payment", paymentMethods[selectedPayment]);
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      // Apps Script web apps don't return CORS headers, so the response is
+      // opaque (mode: "no-cors"); the submission still succeeds server-side.
+      await fetch(BOOKING_ENDPOINT, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData,
+        mode: "no-cors",
+        body: params,
       });
-      const data = await res.json();
-      if (data.success) {
-        setSubmitted(true);
-        if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        setError(data.message || "Something went wrong. Please try again or message us on WhatsApp.");
-      }
+      setSubmitted(true);
+      if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       setError("Network error. Please try again or message us on WhatsApp.");
     } finally {
