@@ -106,15 +106,26 @@ export default function Hero() {
       aria-label="Hero"
     >
       <div className="sticky top-0 h-screen overflow-hidden grain-overlay flex">
-        {/* Photo background */}
+        {/* Photo background — separate desktop & mobile images */}
         <div className="absolute inset-0" aria-hidden="true">
+          {/* Desktop / tablet */}
           <Image
-            src="/img/hero-astrologer.jpg"
-            alt="Dr. N. Thangabharathi reading a horoscope by lamplight"
+            src="/img/hero-desktop.jpg"
+            alt="Dr. N. Thangabharathi writing a horoscope by lamplight"
             fill
             priority
-            className="object-cover"
-            style={{ objectPosition: "58% 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
+            className="object-cover hidden md:block"
+            style={{ objectPosition: "center 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
+            sizes="100vw"
+          />
+          {/* Mobile */}
+          <Image
+            src="/img/hero-mobile.jpg"
+            alt="Dr. N. Thangabharathi writing a horoscope by lamplight"
+            fill
+            priority
+            className="object-cover md:hidden"
+            style={{ objectPosition: "center 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
             sizes="100vw"
           />
           {/* Dark overlay that intensifies on scroll */}
