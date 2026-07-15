@@ -86,7 +86,6 @@ export default function Hero() {
   const r = prefersReduced;
   // Photo prominent at start, recedes as text appears
   const overlayDark = r ? 0.62 : 0.18 + progress * 0.62; // 0.18 → 0.8
-  const photoScale = r ? 1 : 1.08 - progress * 0.08;
   const starsO = r ? 1 : progress > 0.2 ? Math.min(1, (progress - 0.2) / 0.3) : 0;
 
   const eyebrowO = r ? 1 : Math.min(1, progress / 0.04 + 0.15);
@@ -107,25 +106,27 @@ export default function Hero() {
     >
       <div className="sticky top-0 h-screen overflow-hidden grain-overlay flex">
         {/* Photo background — separate desktop & mobile images */}
-        <div className="absolute inset-0" aria-hidden="true">
-          {/* Desktop / tablet */}
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{ background: "linear-gradient(to bottom, var(--midnight) 0%, var(--deep-indigo) 100%)" }}
+        >
+          {/* Desktop / tablet — full image, never cropped */}
           <Image
             src="/img/hero-desktop.jpg"
             alt="Dr. N. Thangabharathi writing a horoscope by lamplight"
             fill
             priority
-            className="object-cover hidden md:block"
-            style={{ objectPosition: "center 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
+            className="object-contain object-center hidden md:block"
             sizes="100vw"
           />
-          {/* Mobile */}
+          {/* Mobile — full image, never cropped */}
           <Image
             src="/img/hero-mobile.jpg"
             alt="Dr. N. Thangabharathi writing a horoscope by lamplight"
             fill
             priority
-            className="object-cover md:hidden"
-            style={{ objectPosition: "center 32%", transform: `scale(${photoScale})`, transition: "transform 0.2s linear" }}
+            className="object-contain object-center md:hidden"
             sizes="100vw"
           />
           {/* Dark overlay that intensifies on scroll */}
