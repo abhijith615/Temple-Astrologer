@@ -9,7 +9,7 @@ export const siteConfig = {
   established: "2010",
   tagline: "Celestial Insight. Timeless Guidance.",
   subTagline: "Where ancient Vedic science meets the modern seeker.",
-  location: "Thirupur, Tamil Nadu",
+  location: "Tirupur, Tamil Nadu",
   credentials: ["MBA", "MA Astrology", "M.Sc. in Yoga for Human Excellence"],
   social: {
     instagram: "https://www.instagram.com/astrothangabharathi/",
@@ -69,7 +69,7 @@ export const homeContent = {
   },
   credentialsBlock: {
     heading: "Three disciplines. One practitioner.",
-    line: "MBA · MA in Vedic Astrology · M.Sc. in Yoga for Human Excellence",
+    line: "MBA · MA in Astrology · M.Sc. in Yoga for Human Excellence",
     sub: "Decades of learning, distilled into every reading.",
   },
 };
@@ -83,7 +83,7 @@ export const aboutContent = {
   whoWeAre: {
     title: "Who We Are",
     body: [
-      "Arutperunjothi Jothida Nilayam is a premier Astrology Consultation and Training Centre based in Thirupur, Tamil Nadu. Established with the purpose of delivering expert guidance across the many dimensions of Vedic astrology and its allied sciences, the centre has remained committed to accuracy, integrity, and compassionate counsel since its founding.",
+      "Arutperunjothi Jothida Nilayam is a premier Astrology Consultation and Training Centre based in Tirupur, Tamil Nadu. Established with the purpose of delivering expert guidance across the many dimensions of Vedic astrology and its allied sciences, the centre has remained committed to accuracy, integrity, and compassionate counsel since its founding.",
       "Our lead astrologer trained under distinguished and traditionally rooted masters of this ancient science, acquiring not merely academic knowledge but the lived wisdom that only years of devoted practice can cultivate. This depth of preparation enables near-precise readings and meaningful insights that have transformed the lives of countless individuals.",
     ],
   },

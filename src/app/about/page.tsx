@@ -8,7 +8,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Founded in 2010, Arutperunjothi Jothida Nilayam is a premier Vedic astrology consultation and training centre in Thirupur, Tamil Nadu.",
+    "Founded in 2010, Arutperunjothi Jothida Nilayam is a premier Vedic astrology consultation and training centre in Tirupur, Tamil Nadu.",
 };
 
 const specialityGlyphs = [RingsGlyph, CradleGlyph, PathsGlyph, HeartsGlyph, HourglassGlyph];

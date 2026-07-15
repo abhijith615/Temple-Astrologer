@@ -6,7 +6,7 @@ import { homeContent, siteConfig } from "@/lib/config";
 
 const trustItems = [
   "Est. 2010",
-  "Thirupur, Tamil Nadu",
+  "Tirupur, Tamil Nadu",
   "Consultations Across India & Abroad",
   "100% Confidential",
 ];

@@ -15,7 +15,7 @@ export const searchIndex: SearchEntry[] = [
   { title: "Purpose of Astrology", section: "Home", href: "/", keywords: "muhurtha auspicious timing navigation guidance" },
 
   // About
-  { title: "About Us", section: "Our Journey in the Stars", href: "/about", keywords: "founded 2010 thirupur tamil nadu consultation training centre who we are" },
+  { title: "About Us", section: "Our Journey in the Stars", href: "/about", keywords: "founded 2010 tirupur tamil nadu consultation training centre who we are" },
   { title: "Our Specialities", section: "About Us", href: "/about", keywords: "marriage matching conception fertility divorce separation love marriage delayed marriage" },
   { title: "Astrology Education", section: "About Us", href: "/about", keywords: "astrology classes courses training learning" },
   { title: "What We Can Guide You On", section: "About Us", href: "/about", keywords: "education career business marriage finance foreign settlement property health litigation muhurtha" },
